@@ -22,6 +22,7 @@ action :init do
   # gottwall --config=/etc/gottwall.conf.py start
   service new_resource.name do
     supports :status => true, :restart => true, :reload => true
+    action :nothing
   end
 
   template init_script do
@@ -33,7 +34,11 @@ action :init do
                 :group => new_resource.group,
                 :pidfile => new_resource.pidfile,
                 :spawner => spawner,
-                :name => new_resource.name)
-      notifies :restart, "service[#{new_resource.name}]"
-    end
+                :name => new_resource.name,
+                :virtualenv => new_resource.virtualenv,
+                :host => new_resource.host,
+                :port => new_resource.port)
+    notifies :enable, "service[#{new_resource.name}]"
+    notifies :start, "service[#{new_resource.name}]"
+  end
 end

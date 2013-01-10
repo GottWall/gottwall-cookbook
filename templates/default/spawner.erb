@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 . <%= @virtualenv %>/bin/activate
 
-<%= @virtualenv %>/bin/python <%= @virtualenv %>/bin/gottwall --config=<%= @config %> server start <% if @host %>--host=<%= @host %><% end %> <% if @port %>--port=<%= @port %><% end %> &
+<%= @virtualenv %>/bin/python <%= @virtualenv %>/bin/gottwall --config=<%= @config %> server start <% if @host %>--host=<%= @host %><% end %> <% if @port %>--port=<%= @port %><% end %>
