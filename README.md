@@ -36,7 +36,7 @@ To configure database override ``node['gottwall']['backends']['gottwall.backends
      "backends" => {
         ""gottwall.backends.redis.RedisBackend"" => {
           "HOST" => "0.0.0.0",
-	  "PORT" => 4343
+          "PORT" => 4343
         },
      }
 
