@@ -20,22 +20,17 @@ Usage
 =====
 If you want to user gottwall include recipe[gottwall] to you runlist.
 
-Replace you own `node['gottwall']['key']` random key.
-
-For create new superusers you need overrider `node['gottwall']['superusers']` attribute:
-
-    "superusers" => [{
-                     "username" => "alex",
-                     "password" => "tmppassword",
-                     "email" => "alex@obout.ru"}]
+Replace you own `node['gottwall']['secret_key']` random key.
+Add sites for monitoring `node['gottwall']['projects'] = [{"projectname" => "secret_key"}]
 
 We recommend change temporary passwords after from web interface.
 
-To configure database override `node['gottwall']['databases']['default']` keys:
+To configure database override `node['gottwall']['backends']['gottwall.backends.redis.RedisBackend']` keys:
 
-     "databases" => {
-        "default" => {
-          "NAME" => "/var/www/gottwall/gottwall.db"
+     "backends" => {
+        ""gottwall.backends.redis.RedisBackend"" => {
+          "HOST" => "0.0.0.0",
+	  "PORT" => 4343
         },
      }
 
@@ -43,13 +38,47 @@ To configure database override `node['gottwall']['databases']['default']` keys:
 Definitions
 ===========
 
-You can create many gottwall instances or instance with node specified attributes via definition usage:
+You can create config for gottwall need use definition ``gottwall_conf``:
 
-    gottwall_instance "gottwall-1" do
+    gottwall_conf "gottwall" do
         user "gottwall"
         group "gottwall"
-	variables {}
+	virtualenv node["gottwall"]["virtualenv"]
+	# Settings file variables hash
+	settings {}
     end
+
+Resources
+=========
+
+gottwall_instance
+-----------------
+
+To run gottwall instance you can user ``gottwall_instance`` resouce
+
+Attribute parameters
+^^^^^^^^^^^^^^^^^^^^
+
+- ``name`` instance name
+- ``group`` launch by group
+- ``user`` launch by user
+- ``virtualenv``: path to virtualenv
+- ``config``: path to config file
+- ``pidfile``: path to instance pidfile
+- ``host``: host for binding
+- ``port``: port for binging
+- ``workers``: number of workers
+- ``provider``: instance porvider (default: Chef::Provider::GottwallBase)
+
+Providers
+---------
+
+gottwall cookbook support 3 instance providers:
+
+- Chef::Provider::GottwallBase - simple provider, that create init.d script and spawn instance
+- Chef::Provider::GottwallRunit - provider, that spawn instance via ``runit``
+- Chef::Provider::GottWallSupervisor - provider, that spawn instance via ``supervisord``
+
 
 
 Recipes
