@@ -56,7 +56,7 @@ Create gottwall config
 
 Create launch instance:
 
-# Running gottwall instance
+    # Running gottwall instance
     gottwall_instance "gottwall" do
         virtualenv node["gottwall"]["virtualenv"]
         user node["gottwall"]["user"]
@@ -116,10 +116,11 @@ Providers
 
 gottwall cookbook support 3 instance providers:
 
-- Chef::Provider::GottwallBase - simple provider, that create init.d script and spawn instance
-- Chef::Provider::GottwallRunit - provider, that spawn instance via ``runit``
-- Chef::Provider::GottWallSupervisor - provider, that spawn instance via ``supervisord``
+- ``Chef::Provider::GottwallBase`` - simple provider, that create init.d script and spawn instance
 
+- ``Chef::Provider::GottwallRunit`` - provider, that spawn instance via ``runit``
+
+- ``Chef::Provider::GottWallSupervisor`` - provider, that spawn instance via ``supervisord``
 
 
 Recipes
