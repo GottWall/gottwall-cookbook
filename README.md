@@ -105,7 +105,7 @@ To run gottwall instance you can user ``gottwall_instance`` resouce
 - ``host``: host for binding
 - ``port``: port for binging
 - ``workers``: number of workers
-- ``provider``: instance porvider (default: Chef::Provider::GottwallBase)
+- ``provider``: instance porvider (default: ``Chef::Provider::GottwallBase``)
 
 ### Providers
 
