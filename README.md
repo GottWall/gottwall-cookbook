@@ -18,7 +18,13 @@ All default values of attributes you can see in `attributes/default.rb`
 
 Usage
 =====
-If you want to user gottwall include recipe[gottwall] to you runlist.
+To use the cookbook we recommend creating a cookbook named after the application, e.g. my_app.
+In metadata.rb you should declare a dependency on this cookbook.
+ For example a Rails application may include:
+
+depends "gottwall"
+
+Include recipe[gottwall] to you runlist.
 
 Replace you own `node['gottwall']['secret_key']` random key.
 Add sites for monitoring `node['gottwall']['projects'] = [{"projectname" => "secret_key"}]
@@ -34,6 +40,32 @@ To configure database override `node['gottwall']['backends']['gottwall.backends.
         },
      }
 
+Add ``"recipe[gottwall::instance]"`` to you runlist.
+
+Or make you own custom configuration via resouces and definitions.
+
+Create gottwall config
+
+    gottwall_conf "gottwall" do
+        user "gottwall"
+        group "gottwall"
+	virtualenv node["gottwall"]["virtualenv"]
+	# Settings file variables hash
+	settings {}
+    end
+
+Create launch instance
+
+# Running gottwall instance
+  gottwall_instance "gottwall" do
+     virtualenv node["gottwall"]["virtualenv"]
+     user node["gottwall"]["user"]
+     group node["gottwall"]["group"]
+     pidfile "/var/run/gottwall-1.pid"
+     config node["gottwall"]["config"]
+  end
+
+Or
 
 Definitions
 ===========
