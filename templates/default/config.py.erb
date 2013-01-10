@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+STORAGE = "<%= @storage %>"
+
+BACKENDS = {
+    <% for @name, @dsettings in @backends %>
+    "<%= @name %>": {
+        <% for @key, @value in @dsettings %>
+        "<%= @key.upcase %>": "<%= @value %>",
+        <% end %>
+        },
+    <% end %>
+    }
+
+STORAGE_SETTINGS = {
+    <% for @name, @value in @storage_settings %>
+    "<%= @name.upcase %>": "<%= @value %>",
+    <% end %>
+    }
+
+
+USERS = [
+    <% for @email in @users %>
+    "<%= @key %>",
+    <% end %>]
+
+SECRET_KEY = "<%= @secret_key %>"
+
+# http://public_key:secret_key@host.com
+
+PROJECTS = {
+    <% for @name, @key in @projects %>
+    "<%= @name %>": "<%= @key %>",
+    <% end %>
+    }
+
+
+cookie_secret = "<%= @cookie_secret %>"
+
+site_title = "<% @site_title %>"
+
+TEMPLATE_DEBUG = False

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. <%= @virtualenv %>
+
+<%= @virtualenv %>/bin/python <%= @virtualenv %>/bin/gottwall --config=<%= @config %> server start <% if @host %>--host=<%= @host %><% end %> <% if @port %>--port=<%= @port %><% end %> &
