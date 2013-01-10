@@ -31,7 +31,7 @@ Add sites for monitoring `node['gottwall']['projects'] = [{"projectname" => "sec
 
 We recommend change temporary passwords after from web interface.
 
-To configure database override `node['gottwall']['backends']['gottwall.backends.redis.RedisBackend']` keys:
+To configure database override ``node['gottwall']['backends']['gottwall.backends.redis.RedisBackend']`` keys:
 
      "backends" => {
         ""gottwall.backends.redis.RedisBackend"" => {
