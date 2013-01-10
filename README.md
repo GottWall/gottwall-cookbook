@@ -73,9 +73,9 @@ You can create config for gottwall need use definition ``gottwall_conf``:
     gottwall_conf "gottwall" do
         user "gottwall"
         group "gottwall"
-	virtualenv node["gottwall"]["virtualenv"]
-	# Settings file variables hash
-	settings {}
+        virtualenv node["gottwall"]["virtualenv"]
+        # Settings file variables hash
+        settings {}
     end
 
 #### Attributes
