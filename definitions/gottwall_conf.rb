@@ -18,7 +18,6 @@ define :gottwall_conf, :name => nil, :template => "config.py.erb",
 :virtualenv_dir => nil,
 :user => "gottwall", :group => "group",
 :config => nil,
-:superusers => [],
 :variables => {},
 :settings => {} do
 
@@ -30,7 +29,7 @@ define :gottwall_conf, :name => nil, :template => "config.py.erb",
   #settings_variables = Chef::Mixin::DeepMerge.deep_merge!(node[:gottwall][:settings], params[:settings].to_hash)
 
   settings_variables = params[:settings]
-  config = params[:config] || node["gottwall"]["config"]
+  config = params[:config] || params[:name] || node["gottwall"]["config"]
   settings_variables["config"] = config
 
   # Making application virtualenv directory

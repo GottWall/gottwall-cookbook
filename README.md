@@ -49,23 +49,22 @@ Create gottwall config
     gottwall_conf "gottwall" do
         user "gottwall"
         group "gottwall"
-	virtualenv node["gottwall"]["virtualenv"]
-	# Settings file variables hash
-	settings {}
+        virtualenv node["gottwall"]["virtualenv"]
+        # Settings file variables hash
+        settings {}
     end
 
-Create launch instance
+Create launch instance:
 
 # Running gottwall instance
-  gottwall_instance "gottwall" do
-     virtualenv node["gottwall"]["virtualenv"]
-     user node["gottwall"]["user"]
-     group node["gottwall"]["group"]
-     pidfile "/var/run/gottwall-1.pid"
-     config node["gottwall"]["config"]
-  end
+    gottwall_instance "gottwall" do
+        virtualenv node["gottwall"]["virtualenv"]
+        user node["gottwall"]["user"]
+        group node["gottwall"]["group"]
+        pidfile "/var/run/gottwall-1.pid"
+        config node["gottwall"]["config"]
+    end
 
-Or
 
 Definitions
 ===========
@@ -79,6 +78,16 @@ You can create config for gottwall need use definition ``gottwall_conf``:
 	# Settings file variables hash
 	settings {}
     end
+
+Attributes
+^^^^^^^^^^
+
+- ``name`` name or path to config file (if config attr not used)
+- ``template`` config template file name
+- ``user`` user that own application
+- ``group`` gtoup that own application
+- ``config`` path to config file
+- ``settings`` hash of config variables
 
 Resources
 =========
