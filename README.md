@@ -19,15 +19,14 @@ All default values of attributes you can see in `attributes/default.rb`
 Usage
 =====
 To use the cookbook we recommend creating a cookbook named after the application, e.g. my_app.
-In metadata.rb you should declare a dependency on this cookbook.
- For example a Rails application may include:
+In metadata.rb you should declare a dependency on this cookbook:
 
 depends "gottwall"
 
-Include recipe[gottwall] to you runlist.
+Include ``recipe[gottwall]`` to you runlist.
 
-Replace you own `node['gottwall']['secret_key']` random key.
-Add sites for monitoring `node['gottwall']['projects'] = [{"projectname" => "secret_key"}]
+Replace you own ``node['gottwall']['secret_key']`` random key.
+Add sites for monitoring ``node['gottwall']['projects'] = [{"projectname" => "secret_key"}]``
 
 We recommend change temporary passwords after from web interface.
 
