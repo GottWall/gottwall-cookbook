@@ -18,7 +18,6 @@ gottwall_conf "gottwall" do
   settings node["gottwall"]
 end
 
-
 # Running gottwall instance
 gottwall_instance "gottwall" do
   virtualenv node["gottwall"]["virtualenv"]
