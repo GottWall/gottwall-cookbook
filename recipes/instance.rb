@@ -20,7 +20,7 @@ end
 
 
 # Running gottwall instance
-gottwall_instance "gottwall-1" do
+gottwall_instance "gottwall" do
   virtualenv node["gottwall"]["virtualenv"]
   user node["gottwall"]["user"]
   group node["gottwall"]["group"]

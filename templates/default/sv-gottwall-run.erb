@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+TARGET_USER=<%= @options[:user] %>
+PID_FILE=<%= @options[:pidfile] %>
+CONFIG_FILE=<%= @options[:config] %>
+
+. <%= @options[:virtualenv] %>/bin/activate
+
+exec chpst -u $TARGET_USER gottwall --config=$CONFIG_FILE server start <% if @options[:port] %>--port=<%= @options[:port] %><% end %> <% if @options[:host] %>--host=<%= @options[:host] %><% end %>
