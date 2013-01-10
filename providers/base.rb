@@ -3,7 +3,7 @@ action :init do
 
   config = new_resource.config || node["gottwall"]["config"]
 
-  spawner = "#{ new_resource.virtualenv }/bin/#{ new_resource.name }"
+  spawner = "#{ new_resource.virtualenv }/bin/#{ new_resource.name }-spawner"
   init_script = "/etc/init.d/#{ new_resource.name }"
 
   template spawner do
@@ -22,7 +22,6 @@ action :init do
   # gottwall --config=/etc/gottwall.conf.py start
   service new_resource.name do
     supports :status => true, :restart => true, :reload => true
-    action [ :enable, :start ]
   end
 
   template init_script do
