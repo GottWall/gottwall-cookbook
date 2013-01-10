@@ -78,8 +78,7 @@ You can create config for gottwall need use definition ``gottwall_conf``:
 	settings {}
     end
 
-Attributes
-^^^^^^^^^^
+#### Attributes
 
 - ``name`` name or path to config file (if config attr not used)
 - ``template`` config template file name
@@ -91,13 +90,11 @@ Attributes
 Resources
 =========
 
-gottwall_instance
------------------
+### gottwall_instance
 
 To run gottwall instance you can user ``gottwall_instance`` resouce
 
-Attribute parameters
-^^^^^^^^^^^^^^^^^^^^
+#### Attribute parameters
 
 - ``name`` instance name
 - ``group`` launch by group
@@ -110,8 +107,7 @@ Attribute parameters
 - ``workers``: number of workers
 - ``provider``: instance porvider (default: Chef::Provider::GottwallBase)
 
-Providers
----------
+### Providers
 
 gottwall cookbook support 3 instance providers:
 
