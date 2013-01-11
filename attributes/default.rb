@@ -35,7 +35,7 @@ default["gottwall"]["storage_settings"] = {
 
 default["gottwall"]["server"] = {
   "host" => "127.0.0.1",
-  "port" => "8889"
+  "port" => 8889
 }
 
 default["gottwall"]["site_title"] = "GottWall"
