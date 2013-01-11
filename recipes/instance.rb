@@ -10,6 +10,21 @@
 
 include_recipe "gottwall::default"
 
+group node["gottwall"]["group"] do
+  action :create
+  system true
+  not_if "grep #{node['gottwall']['group']} /etc/group"
+end
+
+user node["gottwall"]["user"] do
+  comment "gottwall service user"
+  gid node["gottwall"]["group"]
+  system true
+  shell "/bin/bash"
+  action :create
+  not_if "grep #{node['gottwall']['user']} /etc/passwd"
+end
+
 # Create gottwall instance virtualenv and config
 gottwall_conf node["gottwall"]["config"] do
   virtualenv_dir node["gottwall"]["virtualenv"]
