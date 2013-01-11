@@ -11,12 +11,13 @@
 include_recipe "gottwall::default"
 
 # Create gottwall instance virtualenv and config
-gottwall_conf "gottwall" do
+gottwall_conf node["gottwall"]["config"] do
   virtualenv_dir node["gottwall"]["virtualenv"]
   user node["gottwall"]["user"]
   group node["gottwall"]["group"]
   settings node["gottwall"]
 end
+
 
 # Running gottwall instance
 gottwall_instance "gottwall" do
