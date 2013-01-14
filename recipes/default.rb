@@ -8,3 +8,5 @@
 # :github: http://github.com/GottWall/gottwall-cookbook
 #
 
+include_recipe "python::pip"
+include_recipe "python::virtualenv"
