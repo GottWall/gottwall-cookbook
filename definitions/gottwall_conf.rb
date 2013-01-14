@@ -10,6 +10,9 @@
 # :github: http://github.com/Lispython/gottwall-cookbook
 #
 
+include_recipe "python::pip"
+include_recipe "python::virtualenv"
+
 class Chef::Recipe
   include Chef::Mixin::DeepMerge
 end
