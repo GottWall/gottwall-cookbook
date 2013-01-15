@@ -64,7 +64,7 @@ define :gottwall_conf, :name => nil, :template => "config.py.erb",
     group params[:group]
     virtualenv virtualenv_dir
     version node["gottwall"]["version"]
-    action :install
+    action :upgrade
   end
 
   bash "chown virtualenv" do
