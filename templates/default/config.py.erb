@@ -22,7 +22,7 @@ STORAGE_SETTINGS = {
 
 USERS = [
     <% for @email in @users %>
-    "<%= @key %>",
+    "<%= @email %>",
     <% end %>]
 
 SECRET_KEY = "<%= @secret_key %>"
@@ -30,8 +30,8 @@ SECRET_KEY = "<%= @secret_key %>"
 # http://public_key:secret_key@host.com
 
 PROJECTS = {
-    <% for @name, @key in @projects %>
-    "<%= @name %>": "<%= @key %>",
+    <% for @name, @project_key in @projects %>
+    "<%= @name %>": "<%= @project_key %>",
     <% end %>
     }
 

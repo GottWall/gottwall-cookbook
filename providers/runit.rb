@@ -9,7 +9,7 @@ action :init do
 
   runit_service gottwall_new_resource.name do
     template_name gottwall_new_resource.name
-    run_restart false
+    run_restart true
     options :user => gottwall_new_resource.user,
     :group => gottwall_new_resource.group,
     :service_name => gottwall_new_resource.name,
