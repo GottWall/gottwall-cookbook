@@ -41,3 +41,5 @@ default["gottwall"]["server"] = {
 default["gottwall"]["site_title"] = "GottWall"
 default["gottwall"]["cookie_secret"] = "cookie_secret"
 default["gottwall"]["secret_key"] = "secret_key"
+
+default["gottwall"]["prefix"] = "/gottwall"
