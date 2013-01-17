@@ -12,7 +12,7 @@ default["gottwall"]["group"] = "gottwall"
 default["gottwall"]["config"] = "/etc/gottwall.conf.py"
 default["gottwall"]["virtualenv"] = "/var/www/gottwall"
 
-default["gottwall"]["version"] = "0.1.15"
+default["gottwall"]["version"] = "0.1.16"
 
 
 default["gottwall"]["storage"] = "gottwall.storages.RedisStorage"
@@ -43,3 +43,4 @@ default["gottwall"]["cookie_secret"] = "cookie_secret"
 default["gottwall"]["secret_key"] = "secret_key"
 
 default["gottwall"]["prefix"] = "/gottwall"
+default["gottwall"]["log_level"] = "WARNING"
