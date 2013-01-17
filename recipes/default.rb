@@ -8,17 +8,5 @@
 # :github: http://github.com/GottWall/gottwall-cookbook
 #
 
-group node["gottwall"]["group"] do
-  action :create
-  system true
-  not_if "grep #{node['gottwall']['group']} /etc/group"
-end
-
-user node["gottwall"]["user"] do
-  comment "gottwall service user"
-  gid node["gottwall"]["group"]
-  system true
-  shell "/bin/bash"
-  action :create
-  not_if "grep #{node['gottwall']['user']} /etc/passwd"
-end
+include_recipe "python::pip"
+include_recipe "python::virtualenv"
