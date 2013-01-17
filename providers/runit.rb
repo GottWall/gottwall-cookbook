@@ -19,7 +19,7 @@ action :init do
     :pidfile => gottwall_new_resource.pidfile,
     :port => gottwall_new_resource.port,
     :host => gottwall_new_resource.host,
-    :virtualenv => gottwall_new_resource.virtualenv
+    :virtualenv => gottwall_new_resource.virtualenv,
     :log_level => log_level
   end
 end
