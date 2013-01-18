@@ -47,7 +47,7 @@ end
 node["gottwall"]["aggregators"].each do |aggregator|
 
   # Run gottwall aggregator instances
-  gottwall_aggregator "gottwall-aggregator-1" do
+  gottwall_aggregator aggregator[:name] do
     template_name "gottwall-aggregator"
     virtualenv node["gottwall"]["virtualenv"]
     user node["gottwall"]["user"]
