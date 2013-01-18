@@ -2,10 +2,10 @@
 #
 # Cookbook Name:: gottwall cookbook
 # Recipe:: default
-
-# Create gottwall instance
 #
-# :copyright: (c) 2012 - 2013 by Alexandr Lispython (alex@obout.ru).
+# Web interface launcher
+#
+# :copyright: (c) 2012-2013 by Alexandr Lispython (alex@obout.ru).
 # :license: BSD, see LICENSE for more details.
 # :github: http://github.com/gottwall/gottwall-cookbook
 #
