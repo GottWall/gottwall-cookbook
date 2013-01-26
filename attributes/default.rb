@@ -12,7 +12,7 @@ default["gottwall"]["group"] = "gottwall"
 default["gottwall"]["config"] = "/etc/gottwall.conf.py"
 default["gottwall"]["virtualenv"] = "/var/www/gottwall"
 
-default["gottwall"]["version"] = "0.1.20"
+default["gottwall"]["version"] = "0.2.2"
 
 
 default["gottwall"]["storage"] = "gottwall.storages.RedisStorage"
@@ -21,7 +21,8 @@ default["gottwall"]["backends"]["gottwall.backends.redis.RedisBackend"] = {
   "PORT" => 6379,
   "PASSWORD" => "",
   "DB" => 2,
-  "CHANNEL" => "gottwall"
+  "CHANNEL" => "gottwall",
+  "MAX_LOADING" => 150
 }
 
 default["gottwall"]["projects"] = {}
@@ -37,6 +38,12 @@ default["gottwall"]["server"] = {
   "host" => "127.0.0.1",
   "port" => 8889
 }
+
+default["gottwall"]["aggregators"] = [{
+                                        "name" => "gottwall-aggregator",
+                                        "host" => "127.0.0.1",
+                                        "port" => 8892}
+                                     ]
 
 default["gottwall"]["site_title"] = "GottWall"
 default["gottwall"]["cookie_secret"] = "cookie_secret"

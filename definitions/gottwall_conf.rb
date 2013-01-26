@@ -63,7 +63,7 @@ define :gottwall_conf, :name => nil, :template => "config.py.erb",
     user params[:user]
     group params[:group]
     virtualenv virtualenv_dir
-    version node["gottwall"]["version"]
+    version settings_variables["version"]
     action :upgrade
   end
 
