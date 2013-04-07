@@ -41,3 +41,5 @@ cookie_secret = "<%= @cookie_secret %>"
 site_title = "<% @site_title %>"
 
 TEMPLATE_DEBUG = False
+
+ANONYMOUS_LOGIN =<% if @anonymous_login %>True<% else %>False<% end %>
