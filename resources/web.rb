@@ -20,7 +20,7 @@ attribute :pidfile, :kind_of => String
 attribute :variables, :kind_of => Hash
 attribute :config, :kind_of => String
 attribute :host, :kind_of => String, :default => "0.0.0.0"
-attribute :port, :kind_of => Integer, :default => 9000
+attribute :port, :kind_of => Integer, :default => 8889
 attribute :workers, :kind_of => Integer, :default => 3
 attribute :template_name, :kind_of => String, :default => "gottwall"
 attribute :log_level, :kind_of => String, :default => "warning"

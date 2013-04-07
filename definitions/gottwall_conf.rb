@@ -18,6 +18,7 @@ define :gottwall_conf, :name => nil, :template => "config.py.erb",
 :virtualenv_dir => nil,
 :user => "gottwall", :group => "group",
 :config => nil,
+:version => nil,
 :variables => {},
 :settings => {} do
 
@@ -31,6 +32,7 @@ define :gottwall_conf, :name => nil, :template => "config.py.erb",
   settings_variables = params[:settings]
   config = params[:config] || params[:name] || node["gottwall"]["config"]
   settings_variables["config"] = config
+  version = params[:version] || settings_variables["version"]
 
   # Making application virtualenv directory
   directory virtualenv_dir do
@@ -63,7 +65,7 @@ define :gottwall_conf, :name => nil, :template => "config.py.erb",
     user params[:user]
     group params[:group]
     virtualenv virtualenv_dir
-    version settings_variables["version"]
+    version version
     action :upgrade
   end
 

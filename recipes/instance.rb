@@ -9,21 +9,7 @@
 #
 
 include_recipe "gottwall::default"
-
-group node["gottwall"]["group"] do
-  action :create
-  system true
-  not_if "grep #{node['gottwall']['group']} /etc/group"
-end
-
-user node["gottwall"]["user"] do
-  comment "gottwall service user"
-  gid node["gottwall"]["group"]
-  system true
-  shell "/bin/bash"
-  action :create
-  not_if "grep #{node['gottwall']['user']} /etc/passwd"
-end
+include_recipe "gottwall::user"
 
 # Create gottwall instance virtualenv and config
 gottwall_conf node["gottwall"]["config"] do
@@ -31,17 +17,23 @@ gottwall_conf node["gottwall"]["config"] do
   user node["gottwall"]["user"]
   group node["gottwall"]["group"]
   settings node["gottwall"]
+  version node["gottwall"]["version"]
 end
 
 
 # Run gottwall web instance
-gottwall_web "gottwall" do
-  virtualenv node["gottwall"]["virtualenv"]
-  user node["gottwall"]["user"]
-  group node["gottwall"]["group"]
-  pidfile "/var/run/gottwall-1.pid"
-  config node["gottwall"]["config"]
-  provider Chef::Provider::GottwallRunit
+node["gottwall"]["servers"].each do |server|
+  gottwall_web server['name'] do
+    template_name "gottwall"
+    virtualenv node["gottwall"]["virtualenv"]
+    user node["gottwall"]["user"]
+    group node["gottwall"]["group"]
+    pidfile "/var/run/#{server['name']}.pid"
+    config node["gottwall"]["config"]
+    port server["port"]
+    host server["host"]
+    provider Chef::Provider::GottwallRunit
+  end
 end
 
 node["gottwall"]["aggregators"].each do |aggregator|

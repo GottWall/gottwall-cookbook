@@ -33,13 +33,15 @@ default["gottwall"]["storage_settings"] = {
   "HOST" => "127.0.0.1",
   "PORT" => 6379,
   "PASSWORD" => "",
-  "DB" => 2,
+  "DB" => 2
 }
 
-default["gottwall"]["server"] = {
-  "host" => "127.0.0.1",
-  "port" => 8889
-}
+
+default["gottwall"]["servers"] = [{
+                                    "name" => "gottwall-web-1",
+                                    "host" => "0.0.0.0",
+                                    "port" => 8889
+                                  }]
 
 default["gottwall"]["aggregators"] = [{
                                         "name" => "gottwall-aggregator",
@@ -53,3 +55,10 @@ default["gottwall"]["secret_key"] = "secret_key"
 
 default["gottwall"]["prefix"] = "/gottwall"
 default["gottwall"]["log_level"] = "WARNING"
+
+
+default["gottwall"]["nginx"] = {
+  "domain" => "localhost",
+  "ip_address" => "0.0.0.0",
+  "port" => 80
+}

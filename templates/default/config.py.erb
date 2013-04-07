@@ -7,7 +7,7 @@ BACKENDS = {
     <% for @name, @dsettings in @backends %>
     "<%= @name %>": {
         <% for @key, @value in @dsettings %>
-        "<%= @key.upcase %>": "<%= @value %>",
+        "<%= @key.upcase %>": <% if @value == "True" or @value == "False" %><%= @value %><% elsif @value.is_a?(String) %>"<%= @value %>"<% else %><%= @value %><% end %>,
         <% end %>
         },
     <% end %>
@@ -15,7 +15,7 @@ BACKENDS = {
 
 STORAGE_SETTINGS = {
     <% for @name, @value in @storage_settings %>
-    "<%= @name.upcase %>": "<%= @value %>",
+    "<%= @name.upcase %>": <% if @value == "True" or @value == "False" %><%= @value %><% elsif @value.is_a?(String) %>"<%= @value %>"<% else %><%= @value %><% end %>,
     <% end %>
     }
 
