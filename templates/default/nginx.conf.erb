@@ -1,5 +1,5 @@
 upstream gottwall_backends  {
-  <% node["sentry"]["servers"].each do |server| %>
+  <% node["gottwall"]["servers"].each do |server| %>
   server <%= server["host"] %>:<%= server["port"] %> fail_timeout=60s;
   <% end %>
 }
