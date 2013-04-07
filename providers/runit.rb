@@ -22,4 +22,10 @@ action :init do
             :virtualenv => gottwall_new_resource.virtualenv,
             :log_level => log_level)
   end
+
+  service gottwall_new_resource.name do
+    supports :start => true, :restart => true
+    action :restart
+  end
+
 end

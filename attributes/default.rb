@@ -28,6 +28,7 @@ default["gottwall"]["backends"]["gottwall.backends.redis.RedisBackend"] = {
 default["gottwall"]["projects"] = {}
 default["gottwall"]["users"] = []
 default["gottwall"]["anonymous_login"] = false
+default["gottwall"]["home_autoredirect"] = false
 
 default["gottwall"]["storage_settings"] = {
   "HOST" => "127.0.0.1",
