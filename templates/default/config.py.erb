@@ -38,13 +38,13 @@ PROJECTS = {
 
 cookie_secret = "<%= @cookie_secret %>"
 
-site_title = "<% @site_title %>"
+site_title = "<%= @site_title %>"
 
 TEMPLATE_DEBUG = False
 
 ANONYMOUS_LOGIN = <% if @anonymous_login %>True<% else %>False<% end %>
 
 
-PREFIX = "<% @prefix %>"
+PREFIX = "<%= @prefix %>"
 
 HOME_AUTOREDIRECT = <% if @home_autoredirect %>True<% else %>False<% end %>
