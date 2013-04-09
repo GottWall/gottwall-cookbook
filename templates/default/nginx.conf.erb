@@ -27,5 +27,19 @@ server {
      proxy_set_header   X-Forwarded-Proto $scheme;
   }
 
+  location ~* \.(jpg|png|gif|jpeg|css|js|mp3|wav|swf|mov|doc|pdf|xls|ppt|docx|pptx|xlsx)$ {
+          # Cache static-looking files for 120 minutes, setting a 10 day expiry time in the HTTP header,
+          # whether logged in or not (may be too heavy-handed).
+          open_file_cache_valid 120m;
+          expires 7776000;
+          open_file_cache max=1000 inactive=220s;
 
+	  proxy_pass  http://gottwall_backends;
+          proxy_redirect     off;
+
+          proxy_set_header   Host              $host;
+          proxy_set_header   X-Real-IP         $remote_addr;
+          proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+          proxy_set_header   X-Forwarded-Proto $scheme;
+       }
 }
