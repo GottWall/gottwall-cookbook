@@ -12,7 +12,7 @@ default["gottwall"]["group"] = "gottwall"
 default["gottwall"]["config"] = "/etc/gottwall.conf.py"
 default["gottwall"]["virtualenv"] = "/var/www/gottwall"
 
-default["gottwall"]["version"] = "0.4.0"
+default["gottwall"]["version"] = "0.4.1"
 
 
 default["gottwall"]["storage"] = "gottwall.storages.RedisStorage"
